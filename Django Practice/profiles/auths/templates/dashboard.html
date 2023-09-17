@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+</head>
+<body>
+    <h1>welcome to dashboard {{Name}}</h1>
+    <!-- Message display -->
+    {% if messages %}
+    {% for message in messages %}
+    <h4 {% if messages.tag %} class="{{messages.tags}}" {% endif %}>{{message}}</h4>
+    {% endfor %}
+    {% endif %} <br>
+
+
+    {% if users != None %}
+    <h1>List of users</h1>
+    {% for user in users %}
+
+    <!-- <small>Name : {{user.username}}</small> <br>
+    <small>Email : {{user.email}}</small><br>
+    <small>Joined Date : {{user.date_joined}}</small><br>
+    <small>Last Login : {{user.last_login}}</small> 
+    <h1><hr></h1> -->
+    <a href="{% url 'userprofile' user.id %}">{{user.username}}</a> <br>
+    <h1><hr color="red"></h1> 
+    {% endfor %}
+    {% endif %} 
+<form action="" method="post">
+    {% csrf_token %}
+    <!-- Empty Field error -->
+    {% if form.non_field_errors %}
+    {% for error in form.non_field_errors %}
+    {{error}} <br>
+    {% endfor %}
+    {% endif %}
+
+    <!-- Form show -->
+    {% for fm in form %}
+    {{fm.label_tag}} <br> {{fm}} <br> {{fm.errors|striptags}} <br>
+    {% endfor %}
+    <input type="submit" value="Submit">
+</form>
+    <a href="{% url 'log_out' %}">Logout</a>
+    <a href="{% url 'change_pass' %}">Change Password</a>
+    <a href="{% url 'change_pass1' %}">Change Password 1</a>
+</body>
+</html>

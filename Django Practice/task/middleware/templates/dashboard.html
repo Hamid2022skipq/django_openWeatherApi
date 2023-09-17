@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Hi, {{Name}}</title>
+</head>
+<body>
+    
+    <h1>welcome to dashboard</h1>
+    <p>Your IP address is: {{ request.ip }}</p>
+   
+    <h1> Current User : {{request.group}} Member</h1>
+    
+  
+    <h4>{{request.gold}}</h4>
+    <h4>{{request.Silver}}</h4>
+    <h4>{{request.Bronze}}</h4>
+    <h4>{{request.Guest}}</h4>
+    
+
+    <a href="{% url 'log_out' %}">Logout</a>
+
+</body>
+</html>
