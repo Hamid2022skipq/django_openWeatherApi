@@ -5,7 +5,7 @@ import requests
 # Create your views here.
 def openWeatherApi(request):
     Cities=City.objects.all().last()
-    url='https://api.openweathermap.org/data/2.5/weather?q={}&appid=94c2916267a83950fd712c538d8d3a6e'
+    url='https://api.openweathermap.org/data/2.5/weather?q={}&appid=youropenweatherkeyhere'
     if request.method=='POST':
         form =CityForm(request.POST)
         form.save()
